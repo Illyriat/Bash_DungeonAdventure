@@ -7,9 +7,17 @@ read LAST_NAME # Asks for user input
 echo What is your age?
 read AGE #Ask for user input
 
-echo Hello $FIRST_NAME $LAST_NAME, you are $AGE years old! #Prints the user input variables into a string
+echo Hello $FIRST_NAME $LAST_NAME, you are $AGE years old! #Prints the user input variables into the string.
 
 sleep 2 #sleeps for 2 seconds
+
+
+#This while loop will prompt the user to input a Yes or a No answer. 
+# --Yes will break the loop and move on. 
+# --No will exit the program.
+# --Anything else will tell the user it's an incorrect input and prompt to try again.
+
+# Note, not entirely working as intended. Full 'Yes' & 'No' answers need to be fixed.
 
 while true 
     do
@@ -23,6 +31,8 @@ while true
         esac
     done
 
+
+
 echo "Welcome Traveller $FIRST_NAME. Please select your character class:
 1 - Mage
 2 - Rouge
@@ -30,7 +40,7 @@ echo "Welcome Traveller $FIRST_NAME. Please select your character class:
 4 - Battle Master"
 
 read class
-# Case is a switcher. A user chooses and option and the string line below will fill in the variables of the chosen option.
+# Case is a switcher. A user chooses and option and the string line below the Case will fill in the variables of the chosen option.
 case $class in
     1)
         type="Mage"
@@ -57,14 +67,16 @@ esac
 echo "You have chosen the $type class. Your HP is $hp, and your attack is $attack."
 
 #First boss battle
-beast=$(( $RANDOM % 2 )) #Chooses a random number to be true in this condition, if the user choose thr true value, you move on, or the program ends
+beast=$(( $RANDOM % 2 )) #Chooses a random number to be true in this condition, if the user choose the true value, you move on, or the program ends
 #In this case, 2 random numbers are chosen with their values being either 0 or 1.
 echo "$FIRST_NAME, your first boss approaches! It's a cockroach! Pick a number between 0-1. (0/1)"
 read finished
-# || double barrel means or, so in this case $finished is equal too cheatkill on user input
+# || double barrel means or, so in this case $finished is equal too cheatkill on user input. Putting 'cheatkill' into the user prompt will bypass the number genorated
+# moving onto the next stage.
 if [[ $beast == $finished || $finished == "cheatkill" ]]; then
     echo "The Cockroach is VANQUISHED!"
 else
+# Giving an incorrect answer that isn't equal to the random number gen will exit the program.
     echo "You Died"
     exit 1
 fi

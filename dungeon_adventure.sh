@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SECONDS=0 
+
 echo What is your first name?
 read FIRST_NAME #Asks for user input
 echo What is your last name?
@@ -129,3 +131,8 @@ else
 fi
 
 sleep 2
+
+#At the start of the script SECONDS sets the timers to 0. The below code will print the time it took for the
+#script to run from start to finish once everything in the script has successfully been executed.
+ELAPSED="Elapsed: $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
+echo Traveller $FIRST_NAME. It took you $ELAPSED to beat the dungeon!
